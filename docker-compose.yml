@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    sync:
+        image: geronimosearch/mysql-sync
+        environment:
+            - MYSQL_USERNAME=root
+            - MYSQL_PASSWORD=password
+            - MYSQL_HOST=my-sql-server.host
+            - MYSQL_DB=schema
+            - MYSQL_TABLE=my_table
+            - ES_HOST=https://elasticsearch-server.host
+            - ES_INDEX=myIndex
+        depends_on: 
+            - rabbitmq
+    rabbitmq:
+        image: rabbitmq:3.8.2
+        ports: 
+            - 5672:5672
+
