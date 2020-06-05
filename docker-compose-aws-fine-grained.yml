@@ -1,4 +1,5 @@
-# Template to use with Elasticsearch self managed
+# Template to use with AWS Elasticsearch service with public access
+# Define user using fine-grained
 
 version: "3"
 
@@ -11,8 +12,12 @@ services:
             - MYSQL_HOST=host.docker.internal
             - MYSQL_DB=schema_name
             - MYSQL_TABLE=table_name
-            - ES_HOST=https://localhost
-            - ES_INDEX=segment
+            - ES_HOST=https://my-elasticsearch-host
+            - ES_INDEX=index_name
+            - ES_USERNAME=es_user
+            - ES_PASSWORD=es_user_password
+            - ES_SERVICE=aws
+            - ES_REGION=eu-central-1
         depends_on: 
             - rabbitmq
     rabbitmq:
